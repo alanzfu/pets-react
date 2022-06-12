@@ -1,8 +1,4 @@
 tasks:
-  - init: |
-      echo 'TODO: build project'
-    command: |
-      echo 'TODO: start app'
   - name: Restore .env file
     command: |
       if [ -f .env ]; then
@@ -26,3 +22,14 @@ tasks:
           echo "${DOTENV}" | base64 -d > .env
         fi
       fi
+  - name: Start development environment
+    init: npm install
+    command: npm run dev
+
+# List the ports to expose. Learn more https://www.gitpod.io/docs/config-ports/
+ports:
+  - port: 3000
+    onOpen: open-preview
+    visibility: public
+
+https://uyxclajoudqdcduldemb.supabase.co/auth/v1/verify?token=fgajdrjlsoepvxqyzrcg&type=signup&redirect_to=https://3000-alanzfu-petsreact-o52lyvbxunq.ws-us47.gitpod.io/
